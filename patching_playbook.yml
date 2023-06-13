@@ -1,0 +1,14 @@
+- name: Patch Ubuntu servers
+  hosts: docker_nodes
+  become: true
+  tasks:
+    - name: Update package lists
+      apt:
+        update_cache: yes
+
+    - name: Upgrade installed packages
+      apt:
+        upgrade: dist
+        update_cache: yes
+        autoremove: yes
+        autoclean: yes
